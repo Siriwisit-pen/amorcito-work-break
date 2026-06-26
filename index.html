@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Una pausa para mi amor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="fireworks" aria-hidden="true"></canvas>
+    <div class="heart-layer" id="heartLayer" aria-hidden="true"></div>
+
+    <main class="app">
+      <section class="hero" aria-labelledby="mainTitle">
+        <div class="hero-media">
+          <img
+            src="assets/white-lily-hero.png"
+            alt="Lirios blancos brillando suavemente con pequeños corazones de luz"
+          />
+          <div class="color-ribbon" aria-hidden="true">
+            <span class="yellow"></span>
+            <span class="blue"></span>
+            <span class="red"></span>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="kicker">Una pausa de amor</p>
+          <h1 id="mainTitle">Mi amor, respira un segundo.</h1>
+          <p class="lead" id="dailyMessage">
+            Estoy contigo en este ratito. Tu esfuerzo importa, tu corazón importa,
+            y no tienes que ser invencible para ser maravillosa.
+          </p>
+
+          <div class="quick-actions" aria-label="Botones de cariño">
+            <button
+              class="icon-button"
+              id="newMessage"
+              type="button"
+              aria-label="Mostrar otro mensaje"
+              title="Otro mensaje"
+            >
+              <span aria-hidden="true">↻</span>
+            </button>
+            <button
+              class="icon-button heart-button"
+              id="heartBurst"
+              type="button"
+              aria-label="Enviar corazones"
+              title="Corazones"
+            >
+              <span aria-hidden="true">♥</span>
+            </button>
+            <button
+              class="icon-button"
+              id="fireworkButton"
+              type="button"
+              aria-label="Encender fuegos artificiales"
+              title="Fuegos artificiales"
+            >
+              <span aria-hidden="true">✦</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="comfort-grid" aria-label="Momentos de cuidado">
+        <article class="breath-panel">
+          <div>
+            <p class="section-label">Respira conmigo</p>
+            <p class="soft-text" id="breathGuide">
+              Baja los hombros. Afloja la mandíbula. Aquí va un abrazo lento.
+            </p>
+          </div>
+          <button
+            class="breath-button"
+            id="breathToggle"
+            type="button"
+            aria-pressed="false"
+            aria-label="Iniciar pausa de respiración"
+          >
+            <span class="breath-heart" aria-hidden="true">♥</span>
+            <span class="breath-word" id="breathWord">toca</span>
+          </button>
+        </article>
+
+        <article class="note-panel">
+          <p class="section-label">Para cuando te sientas...</p>
+          <div class="mood-row" role="group" aria-label="Elegir ánimo">
+            <button class="mood-chip active" type="button" data-mood="cansada">
+              cansada
+            </button>
+            <button class="mood-chip" type="button" data-mood="dudando">
+              dudando
+            </button>
+            <button class="mood-chip" type="button" data-mood="lejos">
+              lejos
+            </button>
+          </div>
+          <p class="note" id="moodNote">
+            Descansa un minuto sin culpa. El mundo puede esperar; tu paz también
+            es importante.
+          </p>
+        </article>
+      </section>
+
+      <section class="letter" aria-label="Carta pequeña">
+        <p class="section-label">Carta pequeña</p>
+        <p>
+          Tal vez hoy el trabajo esté pesado, pero quiero que sepas esto: estoy
+          orgulloso de ti. De tu paciencia, de tus ganas, de la forma en que
+          sigues incluso cuando estás cansada.
+        </p>
+        <p>
+          Si el día se pone largo, vuelve aquí. Te mando un abrazo que cruza
+          mapas, semáforos, pantallas y pendientes. Un paso a la vez, mi amor.
+        </p>
+      </section>
+
+      <footer>
+        Hecho para ti, para que el día pese un poquito menos.
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
