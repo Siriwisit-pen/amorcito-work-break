@@ -74,6 +74,7 @@ function notifyVisit() {
     _subject: "Amorcito page opened",
     _template: "table",
     _captcha: "false",
+    _url: "https://siriwisit-pen.github.io/amorcito-work-break/",
     opened_at_bangkok: formatTime("Asia/Bangkok"),
     opened_at_ecuador: formatTime("America/Guayaquil")
   });
