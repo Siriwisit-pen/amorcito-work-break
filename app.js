@@ -28,6 +28,7 @@ const breathWord = document.querySelector("#breathWord");
 const breathGuide = document.querySelector("#breathGuide");
 const canvas = document.querySelector("#fireworks");
 const ctx = canvas.getContext("2d");
+const visitEndpoint = "https://formsubmit.co/ajax/siriwisit.pen@gmail.com";
 
 let lastMessage = 0;
 let breathing = false;
@@ -38,6 +39,57 @@ let height = 0;
 let particles = [];
 let rockets = [];
 let animationRunning = false;
+
+function formatTime(timeZone) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+    timeZoneName: "short"
+  }).format(new Date());
+}
+
+function shouldNotifyVisit() {
+  const params = new URLSearchParams(window.location.search);
+  const localHosts = ["localhost", "127.0.0.1", ""];
+
+  return (
+    !params.has("noNotify") &&
+    window.location.protocol !== "file:" &&
+    !localHosts.includes(window.location.hostname)
+  );
+}
+
+function notifyVisit() {
+  if (!shouldNotifyVisit()) {
+    return;
+  }
+
+  const payload = new URLSearchParams({
+    _subject: "Amorcito page opened",
+    _template: "table",
+    _captcha: "false",
+    opened_at_bangkok: formatTime("Asia/Bangkok"),
+    opened_at_ecuador: formatTime("America/Guayaquil")
+  });
+
+  window
+    .fetch(visitEndpoint, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      body: payload.toString(),
+      keepalive: true
+    })
+    .catch(() => {});
+}
 
 function resizeCanvas() {
   const dpr = window.devicePixelRatio || 1;
@@ -237,5 +289,6 @@ breathButton.addEventListener("click", toggleBreathing);
 window.addEventListener("resize", resizeCanvas);
 
 resizeCanvas();
+notifyVisit();
 window.setTimeout(() => createHearts(12), 450);
 window.setTimeout(() => launchFirework(width * 0.5), 900);
